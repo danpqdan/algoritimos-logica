@@ -58,6 +58,19 @@ public class Vetores {
     }
 
 
+    //Método de busca atraves de texto, retornando a posição do elemento caso exista.
+    public int busca(String elemento){
+        for(int i=0; i<this.tamanho; i++){
+            //Caso o elemento exista irá dar retorno a posição I
+            if(this.elementos[i].equalsIgnoreCase(elemento)){
+                return i;
+            }
+        }
+        // Ou retorna uma posição de vetor inexistente;
+        return -1;
+    }
+
+
     // retorno o elemento tamanho.
     public int tamanho() {
         return this.tamanho;
