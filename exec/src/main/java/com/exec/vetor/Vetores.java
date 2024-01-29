@@ -16,6 +16,22 @@ public class Vetores {
         this.tamanho = 0;
     }
 
+    //Método de aumentar a capacidade do vetor.
+    public void aumentaCapacidade() {
+        //Verifica se os elementos tem o mesmo tamanho do vetor.
+        if (this.tamanho == this.elementos.length) {
+            //Chama um novo vetor com o valor anterior x 2
+            String[] elementosNovos = new String[this.elementos.length * 2];
+            //Reintera os antigos elementos ao novo vetor.
+            for (int i = 0; i < this.elementos.length; i++) {
+                elementosNovos[i] = this.elementos[i];
+            }
+
+            //Adiciona os elementos aos novos elementos(espaço em vetor)
+            this.elementos = elementosNovos;
+        }
+    }
+
     /*
      * Algoritimos de posição, realiza interação com cada elemento inserido na
      * posição. Sem controle de Treads espaço e armazenamento.
@@ -36,6 +52,7 @@ public class Vetores {
 
     // Metodo adicionar, apartir de uma verificação rapida no tamanho & elementos;
     public boolean adicionar(String elemento) {
+        this.aumentaCapacidade();
 
         // Se os elementos forem maiores que o tamanho returna false ou se os elementos
         // foram marioes que o tamanho retorna falso.
@@ -54,6 +71,7 @@ public class Vetores {
         if (!(posicao >= 0 && posicao < tamanho)) {
             throw new IllegalArgumentException("Posição inválida");
         }
+        this.aumentaCapacidade();
 
         // Mover os elementos do I para posição I+1, apos receber um I valido.
         for (int i = this.tamanho; i >= posicao; i--) {
