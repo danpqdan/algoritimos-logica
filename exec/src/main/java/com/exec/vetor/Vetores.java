@@ -3,13 +3,13 @@ package com.exec.vetor;
 import java.util.Arrays;
 
 public class Vetores {
-    // POO básico para inserção de Strings no elemento de acordo com o tamanho;
+    // POO básico para inserção de Strings no elemento de acordo com o tamanho.
     private String[] elementos;
     private int tamanho;
 
     /*
      * Contrutores responsavel pela criação e iniciação do tamanho
-     * Inserido na capacidade total a quantidade de posições do elemento;
+     * Inserido na capacidade total a quantidade de posições do elemento.
      */
     public Vetores(int capacidade) {
         this.elementos = new String[capacidade];
@@ -47,19 +47,30 @@ public class Vetores {
         return false;
     }
 
-    // retorno o elemento tamanho;
+    // Método de busca de elemento apartir de posição do elemento.
+    public String busca(int posicao){
+        //Algoritimo de dupla confirmação, gerando uma exceção caso a posição seja invalida.
+        if(!(posicao >= 0 && posicao < tamanho)){
+            throw new IllegalArgumentException("Posição inválida");
+        }
+        //retorna o elemento caso não caia no bloco anterior.
+        return this.elementos[posicao];
+    }
+
+
+    // retorno o elemento tamanho.
     public int tamanho() {
         return this.tamanho;
     }
 
     /*
-     * metodo padrão de contrução de String
+     * metodo padrão de contrução de String.
      */
 
     @Override
     public String toString() {
 
-        // SB é responsavel pela concatenação das string de retorno do vetor;
+        // SB é responsavel pela concatenação das string de retorno do vetor.
         StringBuilder s = new StringBuilder();
         s.append("[ ");
 
@@ -69,15 +80,16 @@ public class Vetores {
             s.append(" , ");
         }
         // Realiza a exclusão real dos elementos caso o tamanho seja maior que os
-        // elementos;
+        // elementos.
         if (this.tamanho > 0) {
             s.append(this.elementos[this.tamanho - 1]);
         }
-        // Fechamento do vetor;
+        // Fechamento do vetor.
         s.append(" ]");
 
-        // Retorno do SB ao inicio;
+        // Retorno do SB ao inicio.
         return s.toString();
     }
 
 }
+

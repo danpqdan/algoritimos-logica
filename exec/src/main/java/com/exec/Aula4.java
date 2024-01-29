@@ -6,7 +6,8 @@ public class Aula4 {
     public static void main(String[] args) {
 
         //intancia do vetor que esta inserido na classe Vetores;
-        Vetores vetor = new Vetores(1);
+        Vetores vetor = new Vetores(4);
+
 
 
         //Metodo de adição e deleção de futuros elementos;
