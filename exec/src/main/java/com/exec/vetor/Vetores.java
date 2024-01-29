@@ -47,29 +47,49 @@ public class Vetores {
         return false;
     }
 
-    // Método de busca de elemento apartir de posição do elemento.
-    public String busca(int posicao){
-        //Algoritimo de dupla confirmação, gerando uma exceção caso a posição seja invalida.
-        if(!(posicao >= 0 && posicao < tamanho)){
+    // Método de adicinar elemento em posições especificas sem sobreescrita.
+    public boolean adiciona(int posicao, String elemento) {
+        // Algoritimo de dupla confirmação, gerando uma exceção caso a posição seja
+        // invalida.
+        if (!(posicao >= 0 && posicao < tamanho)) {
             throw new IllegalArgumentException("Posição inválida");
         }
-        //retorna o elemento caso não caia no bloco anterior.
+
+        // Mover os elementos do I para posição I+1, apos receber um I valido.
+        for (int i = this.tamanho; i >= posicao; i--) {
+            this.elementos[i + 1] = this.elementos[i];
+        }
+        // Confirmado e incrementado novas posições é possivel inserir agora o elemento
+        // do método sem perder os dados incrementando um novo tamanho;
+        this.elementos[posicao] = elemento;
+        this.tamanho++;
+
+        return false;
+    }
+
+    // Método de busca de elemento apartir de posição do elemento.
+    public String busca(int posicao) {
+        // Algoritimo de dupla confirmação, gerando uma exceção caso a posição seja
+        // invalida.
+        if (!(posicao >= 0 && posicao < tamanho)) {
+            throw new IllegalArgumentException("Posição inválida");
+        }
+        // retorna o elemento caso não caia no bloco anterior.
         return this.elementos[posicao];
     }
 
-
-    //Método de busca atraves de texto, retornando a posição do elemento caso exista.
-    public int busca(String elemento){
-        for(int i=0; i<this.tamanho; i++){
-            //Caso o elemento exista irá dar retorno a posição I
-            if(this.elementos[i].equalsIgnoreCase(elemento)){
+    // Método de busca atraves de texto, retornando a posição do elemento caso
+    // exista.
+    public int busca(String elemento) {
+        for (int i = 0; i < this.tamanho; i++) {
+            // Caso o elemento exista irá dar retorno a posição I
+            if (this.elementos[i].equalsIgnoreCase(elemento)) {
                 return i;
             }
         }
         // Ou retorna uma posição de vetor inexistente;
         return -1;
     }
-
 
     // retorno o elemento tamanho.
     public int tamanho() {
@@ -105,4 +125,3 @@ public class Vetores {
     }
 
 }
-
