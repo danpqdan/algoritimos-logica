@@ -16,18 +16,18 @@ public class Vetores {
         this.tamanho = 0;
     }
 
-    //Método de aumentar a capacidade do vetor.
+    // Método de aumentar a capacidade do vetor.
     public void aumentaCapacidade() {
-        //Verifica se os elementos tem o mesmo tamanho do vetor.
+        // Verifica se os elementos tem o mesmo tamanho do vetor.
         if (this.tamanho == this.elementos.length) {
-            //Chama um novo vetor com o valor anterior x 2
+            // Chama um novo vetor com o valor anterior x 2
             String[] elementosNovos = new String[this.elementos.length * 2];
-            //Reintera os antigos elementos ao novo vetor.
+            // Reintera os antigos elementos ao novo vetor.
             for (int i = 0; i < this.elementos.length; i++) {
                 elementosNovos[i] = this.elementos[i];
             }
 
-            //Adiciona os elementos aos novos elementos(espaço em vetor)
+            // Adiciona os elementos aos novos elementos(espaço em vetor)
             this.elementos = elementosNovos;
         }
     }
@@ -83,6 +83,22 @@ public class Vetores {
         this.tamanho++;
 
         return false;
+    }
+
+    public void remove(int posicao) {
+        // Algoritimo de dupla confirmação, gerando uma exceção caso a posição seja invalida.
+        if (!(posicao >= 0 && posicao < tamanho)) {
+            throw new IllegalArgumentException("Posição inválida");
+        }
+
+        //Verifica o Indice e logo remove o tamanho apos encontrar o I.
+        for(int i=posicao; i<this.tamanho-1; i++){
+            //Torna o indice no valor final
+            this.elementos[i] = this.elementos[i+1];
+        }
+
+        //Mantem o tamanho do vetor de forma decremental.
+        this.tamanho--;
     }
 
     // Método de busca de elemento apartir de posição do elemento.
